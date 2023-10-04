@@ -7,9 +7,10 @@ import java.time.LocalDate;
 @Entity
 public class Schedule
 {
-
+    @Id
+    private int scheduleId;
     LocalDate localdate;
-@Id
+
     private int moveId;
 
     public Schedule(LocalDate localdate, int moveId)
