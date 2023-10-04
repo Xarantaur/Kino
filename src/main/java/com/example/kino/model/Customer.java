@@ -6,16 +6,16 @@ import jakarta.persistence.Id;
 @Entity
 public class Customer
 {
-    private String emil;
+    private String email;
     private String password;
     @Id
     private int customerId;
     private String firstName;
     private String lastName;
 
-    public Customer(String emil, String password, int customerId, String firstName, String lastName)
+    public Customer(String email, String password, int customerId, String firstName, String lastName)
     {
-        this.emil = emil;
+        this.email = email;
         this.password = password;
         this.customerId = customerId;
         this.firstName = firstName;
@@ -27,14 +27,14 @@ public class Customer
 
     }
 
-    public String getEmil()
+    public String getemail()
     {
-        return emil;
+        return email;
     }
 
-    public void setEmil(String emil)
+    public void setemail(String email)
     {
-        this.emil = emil;
+        this.email = email;
     }
 
     public String getPassword()
