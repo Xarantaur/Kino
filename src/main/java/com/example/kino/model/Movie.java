@@ -1,7 +1,9 @@
 package com.example.kino.model;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class Movie
 {
     @Id
@@ -19,6 +21,11 @@ public class Movie
         this.length = length;
         this.cast = cast;
         this.description = description;
+    }
+
+    public Movie()
+    {
+
     }
 
     //getter and setters

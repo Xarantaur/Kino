@@ -1,8 +1,10 @@
 package com.example.kino.model;
 
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class Screen
 {
 
@@ -17,6 +19,11 @@ public class Screen
         this.availableSeat = availableSeat;
         this.capacity = capacity;
         this.screenId = screenId;
+    }
+
+    public Screen()
+    {
+
     }
 
     public int getAvailableSeat()

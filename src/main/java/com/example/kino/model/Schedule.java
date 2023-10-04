@@ -1,17 +1,26 @@
 package com.example.kino.model;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+@Entity
 public class Schedule
 {
-    LocalDate localdate;
 
+    LocalDate localdate;
+@Id
     private int moveId;
 
     public Schedule(LocalDate localdate, int moveId)
     {
         this.localdate = localdate;
         this.moveId = moveId;
+    }
+
+    public Schedule()
+    {
+
     }
 
     public LocalDate getLocaldate()

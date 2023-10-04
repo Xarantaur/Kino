@@ -1,7 +1,9 @@
 package com.example.kino.model;
 
-import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+@Entity
 public class Customer
 {
     private String emil;
@@ -18,6 +20,11 @@ public class Customer
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Customer()
+    {
+
     }
 
     public String getEmil()

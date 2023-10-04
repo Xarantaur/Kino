@@ -1,7 +1,9 @@
 package com.example.kino.model;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class Booking
 {
     @Id
@@ -20,6 +22,11 @@ public class Booking
         this.customerId = customerId;
         this.movieId = movieId;
         this.seatId = seatId;
+    }
+
+    public Booking()
+    {
+
     }
 
     public int getBookingId()
