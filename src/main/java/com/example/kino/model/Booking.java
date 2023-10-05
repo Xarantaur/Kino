@@ -8,17 +8,14 @@ public class Booking
 {
     @Id
     private int bookingId;
-    private String firstName;
-    private String lastName;
+  
     private int customerId;
-    private int movieId;
+    private int movieId;  // skal være scheduleId.
     private int seatId;
 
-    public Booking(int bookingId, String firstName, String lastName, int customerId, int movieId, int seatId)
+    public Booking(int bookingId, int customerId, int movieId, int seatId)
     {
         this.bookingId = bookingId;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.customerId = customerId;
         this.movieId = movieId;
         this.seatId = seatId;
@@ -37,26 +34,6 @@ public class Booking
     public void setBookingId(int bookingId)
     {
         this.bookingId = bookingId;
-    }
-
-    public String getFirstName()
-    {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
-
-    public String getLastName()
-    {
-        return lastName;
-    }
-
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
     }
 
     public int getCustomerId()
