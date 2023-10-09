@@ -8,6 +8,8 @@ public class Movie
 {
     @Id
     private int movieId;
+
+    private String hfreffoto;
     private String title;
     private String length;
     private String cast;
@@ -15,9 +17,10 @@ public class Movie
 
 
         //Constructor
-    public Movie(int movieId, String title, String length, String cast, String description)
+    public Movie(int movieId, String hfreffoto, String title, String length, String cast, String description)
     {
         this.movieId = movieId;
+        this.hfreffoto = hfreffoto;
         this.title = title;
         this.length = length;
         this.cast = cast;
@@ -40,6 +43,13 @@ public class Movie
         this.movieId = movieId;
     }
 
+    public String getHfreffoto() {
+        return hfreffoto;
+    }
+
+    public void setHfreffoto(String hfreffoto) {
+        this.hfreffoto = hfreffoto;
+    }
 
     public String getTitle()
     {
