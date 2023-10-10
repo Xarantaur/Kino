@@ -2,6 +2,8 @@ package com.example.kino.model;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity
 public class Customer
@@ -9,6 +11,7 @@ public class Customer
     private String email;
     private String password;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
     private String firstName;
     private String lastName;
@@ -76,4 +79,10 @@ public class Customer
     {
         this.lastName = lastName;
     }
+
+    public String toString(){
+        return "First Name:" + firstName + ", Last Name:" + lastName + ", Email:" + email + ", Password:" + password + ", CustomerId:" + customerId;
+    }
 }
+
+

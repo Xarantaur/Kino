@@ -6,24 +6,41 @@ import com.example.kino.service.PasswordHashing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
 public class CustomerRestController
 {
 
-    PasswordHashing passwordHashing;
+
+    PasswordHashing passwordHashing = new PasswordHashing();
     @Autowired
     CustomerRepository customerRepository;
 
-    @PostMapping("/createuser")
+    @PostMapping("/loginuser")
+    public ResponseEntity<String> getLoginCustomer(@RequestBody Customer customer) {
+        String email = customer.getemail();
+        String password = passwordHashing.doHashing(customer.getPassword());
+
+        Optional<Customer> userOptional = customerRepository.findByEmailAndPassword(email, password);
+
+        if(userOptional.isPresent()){
+            return ResponseEntity.ok("Login succesful");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid email or code");
+        }
+
+    }
+
+    @PostMapping("/user")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+        System.out.println(customer);
         customer.setPassword(passwordHashing.doHashing(customer.getPassword()));
-        Customer savedCustomer = customerRepository.save(customer);
+        Customer savedCustomer = customerRepository.save(customer);;
+
         if (savedCustomer == null) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
