@@ -1,27 +1,42 @@
 package com.example.kino.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.sql.Time;
 import java.time.LocalDate;
+
 @Entity
 public class Schedule
 {
     @Id
     private int scheduleId;
-    LocalDate localdate;
+    private LocalDate localdate;
 
-    private int moveId;
+    @Column(columnDefinition = "TIME")
+    private Time time;
 
-    public Schedule(LocalDate localdate, int moveId)
+    private int movieId;
+
+    public Schedule(LocalDate localdate, Time time, int movieId)
     {
         this.localdate = localdate;
-        this.moveId = moveId;
+        this.time = time;
+        this.movieId = movieId;
     }
 
     public Schedule()
     {
 
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 
     public LocalDate getLocaldate()
@@ -34,13 +49,13 @@ public class Schedule
         this.localdate = localdate;
     }
 
-    public int getMoveId()
+    public int getmovieId()
     {
-        return moveId;
+        return movieId;
     }
 
-    public void setMoveId(int moveId)
+    public void setmovieId(int movieId)
     {
-        this.moveId = moveId;
+        this.movieId = movieId;
     }
 }

@@ -4,8 +4,10 @@ import com.example.kino.model.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ScheduleRepository extends JpaRepository<Schedule, String>
-{
+import java.util.List;
 
+@Repository
+public interface ScheduleRepository extends JpaRepository<Schedule, Integer>
+{
+    List<Schedule> findByMovieId(Integer id);
 }
