@@ -17,10 +17,10 @@ public class ScheduleRestController
     @Autowired
     ScheduleRepository scheduleRepository;
 
-    @GetMapping("/schedule/{movie_id}")
-    public List<Schedule> getScheduleForMovie(@PathVariable int movie_id)
+    @GetMapping("/schedule/{movieid}")
+    public List<Schedule> getScheduleForMovie(@PathVariable int movieid)
     {
-        List<Schedule> schedules = scheduleRepository.findByMovieId(movie_id);
+        List<Schedule> schedules = scheduleRepository.findByMovieId(movieid);
         return schedules;
     }
 }
