@@ -32,7 +32,16 @@ public class CustomerRestController
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid email or code");
         }
+    }
 
+    @PostMapping("/getuser")
+    public Customer getCustomer(@RequestBody Customer customer) {
+        String email = customer.getemail();
+        String password = passwordHashing.doHashing(customer.getPassword());
+
+        Customer foundCustomer = customerRepository.findCustomerByEmailAndPassword(email, password);
+
+        return foundCustomer;
     }
 
     @PostMapping("/user")
