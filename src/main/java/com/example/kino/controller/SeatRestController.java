@@ -26,8 +26,11 @@ public class SeatRestController
     }
 
     @GetMapping("/getseats")
-    public List<Seat> getAllSeats(){
-    return seatRepository.findAll();
+    public ResponseEntity<List<Seat>> getSavedSeats(@RequestParam ("scheduleId") Long scheduleId,
+                                                    @RequestParam ("screenId") Long screenId)
+    {
+        List<Seat> seats = seatRepository.findByScheduleIdAndScreenId(scheduleId, screenId);
+        return new ResponseEntity<>(seats, HttpStatus.OK);
     }
 
     @PostMapping("/save/seats")
