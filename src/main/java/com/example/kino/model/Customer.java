@@ -2,16 +2,20 @@ package com.example.kino.model;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity
 public class Customer
 {
-    private String email;
-    private String password;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
     private String firstName;
     private String lastName;
+    private String email;
+    private String password;
 
     public Customer(String email, String password, int customerId, String firstName, String lastName)
     {

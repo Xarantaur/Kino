@@ -1,8 +1,6 @@
 package com.example.kino.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
@@ -11,6 +9,7 @@ import java.time.LocalDate;
 public class Schedule
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int scheduleId;
     private LocalDate localdate;
 
