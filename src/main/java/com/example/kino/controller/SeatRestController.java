@@ -48,9 +48,8 @@ public class SeatRestController
 
                 Seat seat = new Seat();
                 // midlertidig:
-                seat.setSeatId(0);
-                seat.setScheduleId(0);
-                seat.setScreenId(0);
+                seat.setScheduleId(1);
+                seat.setScreenId(1);
                 // midlertidig ^
                 seat.setseatRow(seatRow);
                 seat.setSeatNumber(seatNumber);

@@ -1,15 +1,13 @@
 package com.example.kino.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Seat
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "seat_id")
     private long seatId;
     private String seatNumber;
     private String seatRow;
@@ -41,9 +39,11 @@ public class Seat
 
     }
 
-    public Seat(long seatId, int scheduleId, int screenId)
+    public Seat(long seatId, String seatNumber, String seatRow, int scheduleId, int screenId)
     {
         this.seatId = seatId;
+        this.seatNumber = seatNumber;
+        this.seatRow = seatRow;
         this.scheduleId = scheduleId;
         this.screenId = screenId;
     }
