@@ -30,33 +30,33 @@ public class SeatRestController
                                                     @RequestParam ("screenId") Long screenId)
     {
         List<Seat> seats = seatRepository.findByScheduleIdAndScreenId(scheduleId, screenId);
-        System.out.println(seats.toString());
+        System.out.println(seats);
         return new ResponseEntity<>(seats, HttpStatus.OK);
     }
 
     @PostMapping("/save/seats")
-    public ResponseEntity<String> saveSelectedSeats(@RequestBody List<String> selectedSeats,
-                                                    @RequestBody int screenId,
-                                                    @RequestBody int scheduleId){
+    public ResponseEntity<String> saveSelectedSeats(@RequestBody List<String> selectedSeats){
 
         try{
             System.out.println("Received selected seats: " + selectedSeats);
+
 
             List<Seat> seatsToSave = new ArrayList<>();
 
             for(String seatInfo : selectedSeats){
                 String[] parts = seatInfo.split("-");
-                if(parts.length !=2) {
+                if(parts.length !=4) {
                     return ResponseEntity.badRequest().body("Invalid seat number" + seatInfo);
                 }
                 String seatRow = parts[0];
                 String seatNumber = parts[1];
+                String screenId = parts[2];
+                String scheduleId = parts[3];
 
                 Seat seat = new Seat();
-               /* // midlertidig:
-                seat.setScheduleId(scheduleId);
-                seat.setScreenId(screenId);
-                */ // midlertidig ^
+
+                seat.setScreenId(Integer.parseInt(screenId));
+                seat.setScheduleId(Integer.parseInt(scheduleId));
                 seat.setseatRow(seatRow);
                 seat.setSeatNumber(seatNumber);
                 seatService.saveSeat(seat);
