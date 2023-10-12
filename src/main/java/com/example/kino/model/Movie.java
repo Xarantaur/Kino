@@ -1,7 +1,12 @@
 package com.example.kino.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Movie
@@ -14,10 +19,13 @@ public class Movie
     private String length;
     private String cast;
     private String description;
+    @JsonBackReference
+    @OneToMany(mappedBy = "movie")
+    List<Schedule> schedule;
 
 
         //Constructor
-    public Movie(int movieId, String hfreffoto, String title, String length, String cast, String description)
+    public Movie(int movieId, String hfreffoto, String title, String length, String cast, String description, List<Schedule> schedule)
     {
         this.movieId = movieId;
         this.hfreffoto = hfreffoto;
@@ -25,6 +33,7 @@ public class Movie
         this.length = length;
         this.cast = cast;
         this.description = description;
+        this.schedule = schedule;
     }
 
     public Movie()
@@ -89,5 +98,13 @@ public class Movie
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public List<Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(List<Schedule> schedule) {
+        this.schedule = schedule;
     }
 }

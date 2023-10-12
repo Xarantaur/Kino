@@ -9,6 +9,6 @@ import java.util.*;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, String>
 {
-
+    List<Booking> findBookingByCustomerId(String customerId);
 }
 

@@ -1,11 +1,10 @@
 package com.example.kino.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Schedule
@@ -17,13 +16,16 @@ public class Schedule
     @Column(columnDefinition = "TIME")
     private Time time;
 
-    private int movieId;
 
-    public Schedule(LocalDate localdate, Time time, int movieId)
+    @ManyToOne
+    @JoinColumn(name = "movieId")
+    Movie movie;
+
+    public Schedule(LocalDate localdate, Time time, Movie movie)
     {
         this.localdate = localdate;
         this.time = time;
-        this.movieId = movieId;
+        this.movie = movie;
     }
 
     public Schedule()
@@ -49,13 +51,21 @@ public class Schedule
         this.localdate = localdate;
     }
 
-    public int getmovieId()
-    {
-        return movieId;
+    public int getScheduleId() {
+        return scheduleId;
     }
 
-    public void setmovieId(int movieId)
-    {
-        this.movieId = movieId;
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }
+
+
