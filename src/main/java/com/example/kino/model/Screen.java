@@ -1,6 +1,7 @@
 package com.example.kino.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,9 +13,9 @@ public class Screen
     private int screenId;
     private int availableSeat;
     private int capacity;
-
+    @JsonBackReference
     @OneToOne(mappedBy = "screen")
-    private Movie movie;
+    Movie movie;
 
 
     public Screen(int availableSeat, int capacity, int screenId)

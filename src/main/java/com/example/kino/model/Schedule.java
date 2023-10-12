@@ -25,6 +25,26 @@ public class Schedule
         this.movieId = movieId;
     }
 
+    public int getScheduleId()
+    {
+        return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId)
+    {
+        this.scheduleId = scheduleId;
+    }
+
+    public int getMovieId()
+    {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId)
+    {
+        this.movieId = movieId;
+    }
+
     public Schedule()
     {
 
@@ -48,13 +68,4 @@ public class Schedule
         this.localdate = localdate;
     }
 
-    public int getmovieId()
-    {
-        return movieId;
-    }
-
-    public void setmovieId(int movieId)
-    {
-        this.movieId = movieId;
-    }
 }

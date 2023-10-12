@@ -30,11 +30,14 @@ public class SeatRestController
                                                     @RequestParam ("screenId") Long screenId)
     {
         List<Seat> seats = seatRepository.findByScheduleIdAndScreenId(scheduleId, screenId);
+        System.out.println(seats.toString());
         return new ResponseEntity<>(seats, HttpStatus.OK);
     }
 
     @PostMapping("/save/seats")
-    public ResponseEntity<String> saveSelectedSeats(@RequestBody List<String> selectedSeats){
+    public ResponseEntity<String> saveSelectedSeats(@RequestBody List<String> selectedSeats,
+                                                    @RequestBody int screenId,
+                                                    @RequestBody int scheduleId){
 
         try{
             System.out.println("Received selected seats: " + selectedSeats);
@@ -50,10 +53,10 @@ public class SeatRestController
                 String seatNumber = parts[1];
 
                 Seat seat = new Seat();
-                // midlertidig:
-                seat.setScheduleId(1);
-                seat.setScreenId(1);
-                // midlertidig ^
+               /* // midlertidig:
+                seat.setScheduleId(scheduleId);
+                seat.setScreenId(screenId);
+                */ // midlertidig ^
                 seat.setseatRow(seatRow);
                 seat.setSeatNumber(seatNumber);
                 seatService.saveSeat(seat);

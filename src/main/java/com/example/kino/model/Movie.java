@@ -15,12 +15,10 @@ public class Movie
     private String cast;
     private String description;
     @OneToOne
-    @JsonBackReference
-    @JoinColumn(name = "screenId")
-    private Screen screen;
+    @JoinColumn(name = "screenId", referencedColumnName = "screenId")
+    Screen screen;
 
-        //Constructor
-    public Movie(int movieId, String hfreffoto, String title, String length, String cast, String description)
+    public Movie(int movieId, String hfreffoto, String title, String length, String cast, String description, Screen screen)
     {
         this.movieId = movieId;
         this.hfreffoto = hfreffoto;
@@ -28,7 +26,10 @@ public class Movie
         this.length = length;
         this.cast = cast;
         this.description = description;
+        this.screen = screen;
     }
+
+    //Constructor
 
     public Movie()
     {
