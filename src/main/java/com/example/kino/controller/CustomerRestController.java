@@ -34,14 +34,19 @@ public class CustomerRestController
         }
     }
 
-    @PostMapping("/getuser")
-    public Customer getCustomer(@RequestBody Customer customer) {
-        String email = customer.getemail();
-        String password = passwordHashing.doHashing(customer.getPassword());
+    @GetMapping("/getuser")
+    public ResponseEntity<Customer> getCustomer(
+            @RequestParam(name = "email") String sentemail,
+            @RequestParam(name = "password") String sentpassword
+    ) {
 
-        Customer foundCustomer = customerRepository.findCustomerByEmailAndPassword(email, password);
+        Customer foundCustomer = customerRepository.findCustomerByEmailAndPassword(sentemail, passwordHashing.doHashing(sentpassword));
 
-        return foundCustomer;
+        if(foundCustomer != null) {
+            return ResponseEntity.ok(foundCustomer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/user")
