@@ -1,18 +1,22 @@
 package com.example.kino.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 @Entity
 public class Screen
 {
 
-
-    private int availableSeat = 0;
-    private int capacity = 0;
     @Id
-    private int screenId = 0;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int screenId;
+    private int availableSeat;
+    private int capacity;
+    @JsonBackReference
+    @OneToOne(mappedBy = "screen")
+    Movie movie;
+
 
     public Screen(int availableSeat, int capacity, int screenId)
     {
@@ -24,6 +28,14 @@ public class Screen
     public Screen()
     {
 
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public int getAvailableSeat()

@@ -1,25 +1,49 @@
 package com.example.kino.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Seat
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "seat_id")
     private long seatId;
-
+    private String seatNumber;
+    private String seatRow;
     private int scheduleId;
 
     private int screenId;
+
+    public String getSeatNumber()
+    {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber)
+    {
+        this.seatNumber = seatNumber;
+    }
+
+    public String getseatRow()
+    {
+        return seatRow;
+    }
+
+    public void setseatRow(String seatRow)
+    {
+        this.seatRow = seatRow;
+    }
 
     public Seat(){
 
     }
 
-    public Seat(long seatId, int scheduleId, int screenId)
+    public Seat(long seatId, String seatNumber, String seatRow, int scheduleId, int screenId)
     {
         this.seatId = seatId;
+        this.seatNumber = seatNumber;
+        this.seatRow = seatRow;
         this.scheduleId = scheduleId;
         this.screenId = screenId;
     }

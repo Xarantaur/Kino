@@ -10,6 +10,7 @@ import java.util.List;
 public class Schedule
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int scheduleId;
     private LocalDate localdate;
 
@@ -26,6 +27,26 @@ public class Schedule
         this.localdate = localdate;
         this.time = time;
         this.movie = movie;
+    }
+
+    public int getScheduleId()
+    {
+        return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId)
+    {
+        this.scheduleId = scheduleId;
+    }
+
+    public int getMovieId()
+    {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId)
+    {
+        this.movieId = movieId;
     }
 
     public Schedule()
@@ -51,6 +72,7 @@ public class Schedule
         this.localdate = localdate;
     }
 
+
     public int getScheduleId() {
         return scheduleId;
     }
@@ -66,6 +88,7 @@ public class Schedule
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
+
 }
 
 
