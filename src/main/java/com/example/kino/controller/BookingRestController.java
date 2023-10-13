@@ -18,7 +18,7 @@ public class BookingRestController
     BookingRepository bookingRepository;
 
     @GetMapping("getbookings")
-    public List<Booking> getBookings(@RequestParam(name = "customerId")String customerId) {
+    public List<Booking> getBookings(@RequestParam(name = "customerId")Integer customerId) {
         List<Booking> lstBooking = bookingRepository.findBookingByCustomerId(customerId);
         return lstBooking;
     }
