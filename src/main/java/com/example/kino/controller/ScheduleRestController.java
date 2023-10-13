@@ -5,7 +5,11 @@ import com.example.kino.repositories.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,10 +21,17 @@ public class ScheduleRestController
     @Autowired
     ScheduleRepository scheduleRepository;
 
+
+    @GetMapping("/getschedule")
+    public List<Schedule> getSchedule(@RequestParam(name = "scheduleId")int scheduleId) {
+        List<Schedule> lstSchedule = scheduleRepository.findByScheduleId(scheduleId);
+        return lstSchedule;
+
     @GetMapping("/schedule/{movieid}")
     public List<Schedule> getScheduleForMovie(@PathVariable int movieid)
     {
         List<Schedule> schedules = scheduleRepository.findByMovieId(movieid);
         return schedules;
+
     }
 }

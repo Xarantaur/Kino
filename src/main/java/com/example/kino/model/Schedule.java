@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Schedule
@@ -16,13 +17,16 @@ public class Schedule
     @Column(columnDefinition = "TIME")
     private Time time;
 
-    private int movieId;
 
-    public Schedule(LocalDate localdate, Time time, int movieId)
+    @ManyToOne
+    @JoinColumn(name = "movieId")
+    Movie movie;
+
+    public Schedule(LocalDate localdate, Time time, Movie movie)
     {
         this.localdate = localdate;
         this.time = time;
-        this.movieId = movieId;
+        this.movie = movie;
     }
 
     public int getScheduleId()
@@ -68,4 +72,23 @@ public class Schedule
         this.localdate = localdate;
     }
 
+
+    public int getScheduleId() {
+        return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
 }
+
+
