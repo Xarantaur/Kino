@@ -17,7 +17,7 @@ public class BookingRestController
     @Autowired
     BookingRepository bookingRepository;
 
-    @GetMapping("getbookings")
+    @GetMapping("/getbookings")
     public List<Booking> getBookings(@RequestParam(name = "customerId")Integer customerId) {
         List<Booking> lstBooking = bookingRepository.findBookingByCustomerId(customerId);
         return lstBooking;

@@ -1,5 +1,6 @@
 package com.example.kino.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class Booking
     Schedule schedule;  // skal være scheduleId.
 
     @OneToMany
+    @JsonManagedReference
     @JoinColumn(name = "bookingId", referencedColumnName = "bookingId")
     private List<BookedSeat> bookedSeats;
 
