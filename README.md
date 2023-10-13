@@ -1,3 +1,10 @@
+Lass350s@stud.kea.dk
+LabanKenzo12
+
+for test af programmet så venligst brug denne eksisterende bruger 
+
+
+
 Gruppe Kontrakt.
 Formålet med denne kontrakt er at dokumentere Gruppens fælles forståelse af projekts gang.
 
