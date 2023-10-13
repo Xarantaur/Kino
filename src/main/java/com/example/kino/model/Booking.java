@@ -1,32 +1,57 @@
 package com.example.kino.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Booking
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bookingId")
     private int bookingId;
   
     private int customerId;
-    private int movieId;  // skal være scheduleId.
-    private int seatId;
 
-    public Booking(int bookingId, int customerId, int movieId, int seatId)
+    @OneToOne
+    @JoinColumn(name = "scheduleId", referencedColumnName = "scheduleId")
+    Schedule schedule;  // skal være scheduleId.
+
+    @OneToMany
+    @JoinColumn(name = "bookingId", referencedColumnName = "bookingId")
+    private List<BookedSeat> bookedSeats;
+
+
+    public Booking(int bookingId, int customerId, Schedule schedule, List<BookedSeat> bookedSeats)
     {
         this.bookingId = bookingId;
         this.customerId = customerId;
-        this.movieId = movieId;
-        this.seatId = seatId;
+        this.schedule = schedule;
+        this.bookedSeats = bookedSeats;
+
     }
 
     public Booking()
     {
 
+    }
+
+    public List<BookedSeat> getBookedSeatList() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeatList(List<BookedSeat> bookedSeatList) {
+        this.bookedSeats = bookedSeatList;
+    }
+
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public int getBookingId()
@@ -49,23 +74,4 @@ public class Booking
         this.customerId = customerId;
     }
 
-    public int getMovieId()
-    {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId)
-    {
-        this.movieId = movieId;
-    }
-
-    public int getSeatId()
-    {
-        return seatId;
-    }
-
-    public void setSeatId(int seatId)
-    {
-        this.seatId = seatId;
-    }
 }

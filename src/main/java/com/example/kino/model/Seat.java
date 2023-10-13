@@ -7,13 +7,14 @@ public class Seat
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
+    @Column(name = "seatId")
     private long seatId;
     private String seatNumber;
     private String seatRow;
     private int scheduleId;
 
     private int screenId;
+
 
     public String getSeatNumber()
     {

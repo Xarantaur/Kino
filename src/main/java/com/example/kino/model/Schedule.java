@@ -29,25 +29,7 @@ public class Schedule
         this.movie = movie;
     }
 
-    public int getScheduleId()
-    {
-        return scheduleId;
-    }
 
-    public void setScheduleId(int scheduleId)
-    {
-        this.scheduleId = scheduleId;
-    }
-
-    public int getMovieId()
-    {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId)
-    {
-        this.movieId = movieId;
-    }
 
     public Schedule()
     {

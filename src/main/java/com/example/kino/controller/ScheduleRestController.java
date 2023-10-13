@@ -26,11 +26,12 @@ public class ScheduleRestController
     public List<Schedule> getSchedule(@RequestParam(name = "scheduleId")int scheduleId) {
         List<Schedule> lstSchedule = scheduleRepository.findByScheduleId(scheduleId);
         return lstSchedule;
+    }
 
     @GetMapping("/schedule/{movieid}")
     public List<Schedule> getScheduleForMovie(@PathVariable int movieid)
     {
-        List<Schedule> schedules = scheduleRepository.findByMovieId(movieid);
+        List<Schedule> schedules = scheduleRepository.findByMovie_MovieId(movieid);
         return schedules;
 
     }
