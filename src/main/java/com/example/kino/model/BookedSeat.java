@@ -1,5 +1,6 @@
 package com.example.kino.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,18 +11,14 @@ public class BookedSeat {
     @Column(name = "bookedSeatId")
     int bookedSeatId;
 
-    @ManyToOne
-    @JoinColumn(name = "bookingId", referencedColumnName = "bookingId")
-    Booking booking;
 
     @OneToOne
     @JoinColumn(name = "seatId", referencedColumnName = "seatId")
     Seat seat;
 
-    public BookedSeat(int bookedSeatId, Booking booking, Seat seat)
+    public BookedSeat(int bookedSeatId, Seat seat)
     {
         this.bookedSeatId = bookedSeatId;
-        this.booking = booking;
         this.seat = seat;
     }
 
@@ -36,14 +33,6 @@ public class BookedSeat {
 
     public void setBookedSeatId(int bookedSeatId) {
         this.bookedSeatId = bookedSeatId;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
     }
 
     public Seat getSeat() {
